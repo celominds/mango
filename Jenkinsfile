@@ -30,9 +30,7 @@ pipeline {
 			DotnetTest = 'dotnet test'
 
 			// Dotnet Test
-			DotnetTestResultDir = "-r bin/Release/netcoreapp2.0/UnitTest/${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
-
-
+			DotnetTestResultDir = "-r Release/UnitTest/${currentBuild.fullDisplayName}-Build-${env.BUILD_NUMBER}"
 	}
 
 	stages {
@@ -46,152 +44,89 @@ pipeline {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
 					message:  "${env.JobStartSN}"
-				dir ("mango") {
-					sh "dotnet build ${env.DotnetProjectName}"
+				sh "dotnet build ${env.DotnetProjectName}"
+			}
+		}
+		stage ('Testing: Nunit Testing') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
+				nunit testResultsPattern: 'TestResult.xml'
+			}
+		}
+		stage ('Publish: Dotnet Project FDD & SCD') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				dir('Mango') {
+					sh "${env.DotnetReleaseFDD}"
+					sh "${env.DotnetReleaseSCDWindows10}"
+					sh "${env.DotnetReleaseSCDUbuntu16}"
+					sh "tar -czvf mango.tar.gz Release/*"
+					sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"http://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}\""
 				}
 			}
 		}
-		// stage ('Testing: Nunit Testing') {
-		// 	agent {
-		// 		docker { 
-		// 			image 'microsoft/dotnet'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		dir('mango') {
-		// 			sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
-		// 			nunit testResultsPattern: 'TestResult.xml'
-		// 		}
-		// 	}
-		// }
-		// stage ('Build: ETL - Go Project') {
-		// 	agent {
-		// 		docker {
-		// 			image 'golang'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		dir('GoLangProject'){
-		// 		sh "go get github.com/denisenkom/go-mssqldb"
-		// 			dir('ReadCSV') {
-		// 				sh "${env.GoWindowsBinary} ${env.goProject1}${env.GoWindowsBinaryOutput}${env.goProject1}${env.GoWindowsBinaryOutputFile}"
-		// 				sh "${env.GoLinuxBinary} ${env.goProject1}${env.GoLinuxBinaryOutput}${env.goProject1}${env.GoLinuxBinaryOutputFile}"
-		// 				sh "${env.GoDarwinBinary} ${env.goProject1}${env.GoDarwinBinaryOutput}${env.goProject1}${env.GoDarwinBinaryOutputFile}"
-		// 			}
-		// 			dir('Supernet') {
-		// 				sh "${env.GoWindowsBinary} ${env.goProject2}${env.GoWindowsBinaryOutput}${env.goProject2}${env.GoWindowsBinaryOutputFile}"
-		// 				sh "${env.GoLinuxBinary} ${env.goProject2}${env.GoLinuxBinaryOutput}${env.goProject2}${env.GoLinuxBinaryOutputFile}"
-		// 				sh "${env.GoDarwinBinary} ${env.goProject2}${env.GoDarwinBinaryOutput}${env.goProject}${env.GoDarwinBinaryOutputFile}"
-		// 			}
-		// 		}
-		// 	}
-		// }
-		// stage ('Build: Maven Project') {
-		// 	agent {
-		// 		docker {
-		// 			image 'maven'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		dir('Java') {
-		// 			sh 'mvn clean install'	
-		// 		}
-		// 	}
-		// }
-		// stage ('Publish: Dotnet Project FDD & SCD') {
-		// 	agent {
-		// 		docker { 
-		// 			image 'microsoft/dotnet'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		dir('Supernet') {
-		// 			sh "${env.DotnetReleaseFDD}"
-		// 			sh "${env.DotnetReleaseSCDWindows10}"
-		// 			sh "${env.DotnetReleaseSCDUbuntu16}"
-		// 			sh "tar -czvf dotnet-supernet.tar.gz bin/Release/netcoreapp2.0"
-		// 			// rtUpload (
-		// 			// 	serverId: "cs-artifactory",
-		// 			// 	specPath: 'Artifactory/upload-spec.json',
-		// 			// 	failNoOp: true
-		// 			// )
-		// 			sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T dotnet-supernet.tar.gz \"http://dev.celominds.com:8081/artifactory/celominds-supernet/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}\""
-		// 		}
-		// 	}
-		// }
-		// stage ('Jfrog Artifactory: Upload') {
-		// 	steps {
-		// 		// rtUpload (
-		// 		// 	serverId: "cs-artifactory",
-		// 		// 	specPath: 'Artifactory/sql-upload-spec.json',
-		// 		// 	failNoOp: true
-		// 		// )
-		// 		sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T Supernet.sql \"http://dev.celominds.com:8081/artifactory/celominds-supernet/database/${env.JOB_NAME}-${env.BUILD_NUMBER}\""
-		// 	}
-		// }
-		// stage ('Jfrog Artifactory: Download') {
-		// 	steps {
-		// 		// rtDownload (
-		// 		// 	serverId: "cs-artifactory",
-		// 		// 	specPath: 'Artifactory/download-spec.json',
-		// 		// 	failNoOp: true
-		// 		// )
-		// 		sh "cd /home/Artifactory/Celominds-Supernet | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"http://dev.celominds.com:8081/artifactory/celominds-supernet/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/Supernet.sql\""
-		// 		sh "cd /home/Artifactory/Celominds-Supernet | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"http://dev.celominds.com:8081/artifactory/celominds-supernet/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/dotnet-survey.tar.gz\""
-		// 		sh "cd /home/Artifactory/Celominds-Supernet | tar -xvzf dotnet-supernet.tar.gz"
-		// 	}
-		// }
-		// stage ('Archive Artifacts for Release') {
-		// 	steps {
-		// 		parallel Supernet: {
-		// 			dir('Supernet/bin/Release') {
-		// 				archiveArtifacts artifacts: 'netcoreapp2.0/**', fingerprint: true
-		// 			}
-		// 		},
-		// 		ReadCSV: {
-		// 			dir('GoLangProject/ReadCSV') {
-		// 				archiveArtifacts artifacts: 'ReadCSVOutput/**', fingerprint: true
-		// 			}
-		// 		},
-		// 		SupernetOutput: {
-		// 			dir('GoLangProject/Supernet') {
-		// 				archiveArtifacts artifacts: 'SupernetOutput/**', fingerprint: true
-		// 			}
-		// 		},
-		// 		TargetJava: {
-		// 			dir('Java/target') {
-		// 				archiveArtifacts artifacts: '*jar', fingerprint: true
-		// 			}
-		// 		}
-		// 	}
-		// }
-		// stage ('Docker: Clearing Running Containers') {
-		// 	environment {
-		// 		containerId = sh(script: "docker ps --quiet --filter name=sql-supernet dotnet-supernet", returnStdout: true).trim()
-		// 	}
-		// 	when {
-		// 		expression {
-		// 			return containerId.isEmpty()
-		// 		}
-		// 	}
-		// 	steps {
-		// 		steps {
-		// 			sh "docker rm sql-supernet dotnet-supernet"
-		// 		}
-		// 	}
-		// }
-		// stage ('Deployment: SQL Server') {
-		// 	steps {
-		// 		sh "docker run --name sql-supernet -e \'ACCEPT_EULA=Y\' -e \'SA_PASSWORD=microIn@23\' -e \'MSSQL_PID=Express\' -p 8600:1433 -v /home/Artifactory/\"Celominds-Supernet\"/:/transfer -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu"
-		// 		sh "docker exec -d sql-supernet /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P \'microIn@23\' -Q \'CREATE DATABASE Supernet\'"
-		// 		sh "docker exec -d sql-supernet /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P \'microIn@23\' -Q -i /transfer/Supernet.sql"
-		// 	}
-		// }
-		// stage ('Deployment: ASP.CORE Application') {
-		// 	steps {
-		// 		sh "docker run -d --name dotnet-supernet -v /home/Artifactory/\"Celominds-Supernet\"/:/transfer -p 8700:50620 --link sql-supernet:sql-supernet -d microsoft/dotnet"
-		// 	}
-		// }
+		stage ('Jfrog Artifactory: Upload') {
+			steps {
+				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mangodb.sql \"http://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}\""
+			}
+		}
+		stage ('Jfrog Artifactory: Download') {
+			steps {
+				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"http://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
+				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"http://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/dotnet-survey.tar.gz\""
+				sh "cd /home/Artifactory/mango | tar -xvzf mango.tar.gz"
+			}
+		}
+		stage ('Archive Artifacts for Release') {
+			steps {
+				dir('Mango') {
+					archiveArtifacts artifacts: 'Release/**', fingerprint: true
+				}
+			}
+		}
+
+		/*
+		* Deployment will be tried after the above steps are successfull
+		*
+		stage ('Docker: Clearing Running Containers') {
+			environment {
+				containerId = sh(script: "docker ps --quiet --filter name=sql-supernet mango", returnStdout: true).trim()
+			}
+			when {
+				expression {
+					return containerId.isEmpty()
+				}
+			}
+			steps {
+				steps {
+					sh "docker rm sql-supernet mango"
+				}
+			}
+		}
+		stage ('Deployment: SQL Server') {
+			steps {
+				sh "docker run --name sql-supernet -e \'ACCEPT_EULA=Y\' -e \'SA_PASSWORD=microIn@23\' -e \'MSSQL_PID=Express\' -p 8600:1433 -v /home/Artifactory/\"mango\"/:/transfer -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu"
+				sh "docker exec -d sql-supernet /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P \'microIn@23\' -Q \'CREATE DATABASE Supernet\'"
+				sh "docker exec -d sql-supernet /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P \'microIn@23\' -Q -i /transfer/mangodb.sql"
+			}
+		}
+		stage ('Deployment: ASP.CORE Application') {
+			steps {
+				sh "docker run -d --name mango -v /home/Artifactory/\"mango\"/:/transfer -p 8700:50620 --link sql-supernet:sql-supernet -d microsoft/dotnet"
+			}
+		}
+		*
+		*
+		*/
 	}
 	post {
 		success {
