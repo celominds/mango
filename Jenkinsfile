@@ -30,7 +30,13 @@ pipeline {
 			DotnetTest = 'dotnet test'
 
 			// Dotnet Test
-			DotnetTestResultDir = "-r Release/UnitTest/${currentBuild.fullDisplayName}-Build-${env.BUILD_NUMBER}"
+			DotnetTestResultDir = "-r Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
+
+			// Dotnet Release
+			DotnetReleaseOutputDir = "-o Release/FDD/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
+			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 ${env.DotnetReleaseOutputDir}"
+			DotnetReleaseSCDWindows10 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 -r win10-arm64 ${env.DotnetReleaseOutputDir}"
+			DotnetReleaseSCDUbuntu16 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 -r ubuntu.16.04-x64 ${env.DotnetReleaseOutputDir}"
 	}
 
 	stages {
@@ -59,7 +65,7 @@ pipeline {
 				* Changed the test command - without project solution name
 				*/
 
-				sh "${env.DotnetTest} ${env.DotnetTestResultDir}"
+				sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
 				nunit testResultsPattern: 'TestResult.xml'
 			}
 		}
