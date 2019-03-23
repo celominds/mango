@@ -60,3 +60,8 @@ E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.Views.pdb
 E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.dll
 E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.pdb
 E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.csproj.CopyComplete
+E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Create.g.cshtml.cs
+E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Delete.g.cshtml.cs
+E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Details.g.cshtml.cs
+E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Edit.g.cshtml.cs
+E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Index.g.cshtml.cs

@@ -63,7 +63,7 @@ using Mango.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(60, 154, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1e6301391b8424b8e6c995bf5b0ed07", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e44e07d5ce1464596b29cd1a558598e", async() => {
                 BeginContext(66, 141, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <script src=\"https://canvasjs.com/assets/script/canvasjs.min.js\"></script>\r\n");
                 EndContext();
@@ -83,7 +83,7 @@ using Mango.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(216, 506, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f151299d0cd45a7acab44fa115286fa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3792ef7130344afa6957dc41194729b", async() => {
                 BeginContext(222, 372, true);
                 WriteLiteral(@"
     <div id=""chartContainer""></div>
