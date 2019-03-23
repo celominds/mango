@@ -5,7 +5,7 @@ pipeline {
 		HOME = '/tmp'
 
 		// Global Variables
-		ApplicationName = "mango"
+		ApplicationName = "Mango"
 
 		// Color Coding
 		JobStartCC = '#ffff00'
@@ -31,10 +31,17 @@ pipeline {
 
 			// Dotnet Test
 			DotnetTestResultDir = "-r bin/Release/netcoreapp2.0/UnitTest/${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
-}
+
+
+	}
 
 	stages {
 		stage ('Build: Dotnet Project') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
 			steps {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
@@ -45,15 +52,6 @@ pipeline {
 			}
 		}
 		// stage ('Testing: Nunit Testing') {
-		// 	steps {
-		// 		dir('mango') {
-		// 			sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
-		// 			nunit testResultsPattern: 'TestResult.xml'
-		// 		}
-		// 	}
-		// }
-		
-		// stage ('Publish: Dotnet Project FDD & SCD') {
 		// 	agent {
 		// 		docker { 
 		// 			image 'microsoft/dotnet'
@@ -61,6 +59,53 @@ pipeline {
 		// 	}
 		// 	steps {
 		// 		dir('mango') {
+		// 			sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
+		// 			nunit testResultsPattern: 'TestResult.xml'
+		// 		}
+		// 	}
+		// }
+		// stage ('Build: ETL - Go Project') {
+		// 	agent {
+		// 		docker {
+		// 			image 'golang'
+		// 		}
+		// 	}
+		// 	steps {
+		// 		dir('GoLangProject'){
+		// 		sh "go get github.com/denisenkom/go-mssqldb"
+		// 			dir('ReadCSV') {
+		// 				sh "${env.GoWindowsBinary} ${env.goProject1}${env.GoWindowsBinaryOutput}${env.goProject1}${env.GoWindowsBinaryOutputFile}"
+		// 				sh "${env.GoLinuxBinary} ${env.goProject1}${env.GoLinuxBinaryOutput}${env.goProject1}${env.GoLinuxBinaryOutputFile}"
+		// 				sh "${env.GoDarwinBinary} ${env.goProject1}${env.GoDarwinBinaryOutput}${env.goProject1}${env.GoDarwinBinaryOutputFile}"
+		// 			}
+		// 			dir('Supernet') {
+		// 				sh "${env.GoWindowsBinary} ${env.goProject2}${env.GoWindowsBinaryOutput}${env.goProject2}${env.GoWindowsBinaryOutputFile}"
+		// 				sh "${env.GoLinuxBinary} ${env.goProject2}${env.GoLinuxBinaryOutput}${env.goProject2}${env.GoLinuxBinaryOutputFile}"
+		// 				sh "${env.GoDarwinBinary} ${env.goProject2}${env.GoDarwinBinaryOutput}${env.goProject}${env.GoDarwinBinaryOutputFile}"
+		// 			}
+		// 		}
+		// 	}
+		// }
+		// stage ('Build: Maven Project') {
+		// 	agent {
+		// 		docker {
+		// 			image 'maven'
+		// 		}
+		// 	}
+		// 	steps {
+		// 		dir('Java') {
+		// 			sh 'mvn clean install'	
+		// 		}
+		// 	}
+		// }
+		// stage ('Publish: Dotnet Project FDD & SCD') {
+		// 	agent {
+		// 		docker { 
+		// 			image 'microsoft/dotnet'
+		// 		}
+		// 	}
+		// 	steps {
+		// 		dir('Supernet') {
 		// 			sh "${env.DotnetReleaseFDD}"
 		// 			sh "${env.DotnetReleaseSCDWindows10}"
 		// 			sh "${env.DotnetReleaseSCDUbuntu16}"
