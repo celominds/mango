@@ -79,7 +79,7 @@ pipeline {
 				sh "${env.DotnetReleaseFDD}"
 				sh "${env.DotnetReleaseSCDWindows10}"
 				sh "${env.DotnetReleaseSCDUbuntu16}"
-				sh "tar -czvf mango.tar.gz Release/"
+				sh "tar -czvf mango.tar.gz Mango/Release/*"
 				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"http://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}\""
 			}
 		}
