@@ -34,9 +34,9 @@ pipeline {
 
 			// Dotnet Release
 			DotnetReleaseOutputDir = "-o Release/FDD/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
-			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 ${env.DotnetReleaseOutputDir}"
-			DotnetReleaseSCDWindows10 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 -r win10-arm64 ${env.DotnetReleaseOutputDir}"
-			DotnetReleaseSCDUbuntu16 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 -r ubuntu.16.04-x64 ${env.DotnetReleaseOutputDir}"
+			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.1 ${env.DotnetReleaseOutputDir}"
+			DotnetReleaseSCDWindows10 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.1 -r win10-arm64 ${env.DotnetReleaseOutputDir}"
+			DotnetReleaseSCDUbuntu16 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.1 -r ubuntu.16.04-x64 ${env.DotnetReleaseOutputDir}"
 	}
 
 	stages {
