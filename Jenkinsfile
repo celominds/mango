@@ -54,7 +54,12 @@ pipeline {
 				}
 			}
 			steps {
-				sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
+
+				/*
+				* Changed the test command - without project solution name
+				*/
+
+				sh "${env.DotnetTest} ${env.DotnetTestResultDir}"
 				nunit testResultsPattern: 'TestResult.xml'
 			}
 		}
