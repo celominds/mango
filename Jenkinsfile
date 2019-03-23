@@ -5,7 +5,7 @@ pipeline {
 		HOME = '/tmp'
 
 		// Global Variables
-		ApplicationName = "Supernet-GoLang"
+		ApplicationName = "mango"
 
 		// Color Coding
 		JobStartCC = '#ffff00'
@@ -31,21 +31,10 @@ pipeline {
 
 			// Dotnet Test
 			DotnetTestResultDir = "-r bin/Release/netcoreapp2.0/UnitTest/${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
-
-			// Dotnet Release
-			DotnetReleaseOutputDir = "-o bin/Release/netcoreapp2.0/FDD/Supernet-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
-			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 ${env.DotnetReleaseOutputDir}"
-			DotnetReleaseSCDWindows10 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 -r win10-arm64 ${env.DotnetReleaseOutputDir}"
-			DotnetReleaseSCDUbuntu16 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.0 -r ubuntu.16.04-x64 ${env.DotnetReleaseOutputDir}"
-	}
+}
 
 	stages {
 		stage ('Build: Dotnet Project') {
-			agent {
-				docker { 
-					image 'microsoft/dotnet'
-				}
-			}
 			steps {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
@@ -55,19 +44,14 @@ pipeline {
 				}
 			}
 		}
-		stage ('Testing: Nunit Testing') {
-			agent {
-				docker { 
-					image 'microsoft/dotnet'
-				}
-			}
-			steps {
-				dir('mango') {
-					sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
-					nunit testResultsPattern: 'TestResult.xml'
-				}
-			}
-		}
+		// stage ('Testing: Nunit Testing') {
+		// 	steps {
+		// 		dir('mango') {
+		// 			sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
+		// 			nunit testResultsPattern: 'TestResult.xml'
+		// 		}
+		// 	}
+		// }
 		
 		// stage ('Publish: Dotnet Project FDD & SCD') {
 		// 	agent {
