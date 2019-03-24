@@ -34,9 +34,7 @@ pipeline {
 
 			// Dotnet Release
 			DotnetReleaseOutputDir = "-o Release/FDD/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}"
-			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.1 ${env.DotnetReleaseOutputDir}"
-			DotnetReleaseSCDWindows10 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.1 -r win10-arm64 ${env.DotnetReleaseOutputDir}"
-			DotnetReleaseSCDUbuntu16 = "dotnet publish ${env.DotnetProjectName} -c Release -f netcoreapp2.1 -r ubuntu.16.04-x64 ${env.DotnetReleaseOutputDir}"
+			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release --no-restore ${env.DotnetReleaseOutputDir}"
 	}
 
 	stages {
@@ -77,8 +75,6 @@ pipeline {
 			}
 			steps {
 				sh "${env.DotnetReleaseFDD}"
-				sh "${env.DotnetReleaseSCDWindows10}"
-				sh "${env.DotnetReleaseSCDUbuntu16}"
 				sh "tar -czvf mango.tar.gz Mango/Release/*"
 				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
 			}
