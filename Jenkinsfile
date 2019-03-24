@@ -53,6 +53,7 @@ pipeline {
 					color: "${env.JobStartCC}",
 					message:  "${env.JobStartSN}"
 				sh "dotnet build ${env.DotnetProjectName}"
+				sh "dotnet test ${env.DotnetProjectName} -r Nunit"
 			}
 		}
 		stage ('Testing: Nunit Testing') {
@@ -62,13 +63,13 @@ pipeline {
 				}
 			}
 			steps {
+			dir ('Nunit') {
 				/*
 				* Changed the test command - without project solution name
 				*/
-				sh "nunit-console /xml:console-test.xml nunit.tests.dll"
-				sh "cat console-text.xml"
 				sh "${env.NunitTest}"
 				nunit testResultsPattern: "TestReport.xml"
+			}
 			}
 		}
 		stage ('Publish: Dotnet Project FDD & SCD') {
