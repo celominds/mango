@@ -63,11 +63,11 @@ pipeline {
 				}
 			}
 			steps {
-				dir ('Mango/Nunit') {
+				dir ('Mango') {
 					/*
 					* Changed the test command - without project solution name
 					*/
-					sh "${env.NunitTest}"
+					sh "${env.NunitTest} Mango.csproj"
 					nunit testResultsPattern: "TestReport.xml"
 				}
 			}
