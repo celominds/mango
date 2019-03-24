@@ -31,7 +31,7 @@ pipeline {
 
 			//Nunit
 			NunitTest = "nunit-console"
-			NunitResultOutput = "/work:Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER} /out:TestReport.txt /result:TestReport.xml"
+			NunitResultOutput = "/out:Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.txt /result:Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
 
 			// Dotnet Test
 			DotnetTestResultDir = "-o Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
