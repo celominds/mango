@@ -53,6 +53,10 @@ pipeline {
 					color: "${env.JobStartCC}",
 					message:  "${env.JobStartSN}"
 				sh "dotnet build ${env.DotnetProjectName}"
+			}
+		}
+		stage ('Creating test dll') {
+			steps {
 				sh "dotnet test ${env.DotnetProjectName} -o Nunit"
 			}
 		}
