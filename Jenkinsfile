@@ -30,7 +30,7 @@ pipeline {
 			DotnetTest = 'dotnet test'
 
 			//Nunit
-			NunitTest = "mono nunit3-console.exe"
+			NunitTest = "mono nunit3-console"
 			NunitResultOutput = "-work:Release/NunitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}: -out:TestResult.xml"
 
 			// Dotnet Test
