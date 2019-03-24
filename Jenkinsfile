@@ -65,6 +65,8 @@ pipeline {
 				/*
 				* Changed the test command - without project solution name
 				*/
+				sh "nunit-console /xml:console-test.xml nunit.tests.dll"
+				sh "cat console-text.xml"
 				sh "${env.NunitTest}"
 				nunit testResultsPattern: "TestReport.xml"
 			}
