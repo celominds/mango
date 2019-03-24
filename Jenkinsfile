@@ -59,7 +59,7 @@ pipeline {
 		stage ('Testing: Nunit Testing') {
 			agent {
 				docker {
-					image 'fela98/mono-nunit'
+					image 'vsejpal/mono-nunit'
 				}
 			}
 			steps {
@@ -67,7 +67,7 @@ pipeline {
 					/*
 					* Changed the test command - without project solution name
 					*/
-					sh "${env.NunitTest} /bin/Debug/netcoreapp2.1/Mango.dll"
+					sh "${env.NunitTest} Mango.dll"
 					nunit testResultsPattern: "TestReport.xml"
 				}
 			}
