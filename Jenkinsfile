@@ -55,15 +55,10 @@ pipeline {
 				sh "dotnet build ${env.DotnetProjectName}"
 			}
 		}
-		stage ('Creating test dll') {
-			steps {
-				sh "dotnet test ${env.DotnetProjectName} -o Nunit"
-			}
-		}
 		stage ('Testing: Nunit Testing') {
 			agent {
 				docker {
-					image 'rschmitz/nunit3-console'
+					image 'fela98/mono-nunit'
 				}
 			}
 			steps {
