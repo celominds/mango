@@ -1,3 +1,4 @@
+pipeline {
 	agent any
 	environment {
 		// Very Important; stops from overwriting on temporary files
@@ -29,7 +30,7 @@
 			DotnetTest = 'dotnet test'
 
 			//Nunit
-			NunitTest = "mono nunit3-console"
+			NunitTest = "nunit"
 			NunitResultOutput = "-work:Release/NunitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}: -out:TestResult.xml"
 
 			// Dotnet Test
@@ -55,21 +56,19 @@
 			}
 		}
 		stage ('Testing: Nunit Testing') {
-			// agent {
-			// 	docker {
-			// 		image 'fela98/mono-nunit'
-			// 	}
-			// }
 			agent {
-				docker { 
-					image 'microsoft/dotnet'
+				docker {
+					image 'fela98/mono-nunit'
 				}
 			}
 			steps {
+				dir ('Mango/Nunit') {
 					/*
 					* Changed the test command - without project solution name
 					*/
-					sh "${env.NunitTest}"
+					sh "${env.NunitTest} Mango.dll"
+					nunit testResultsPattern: "TestReport.xml"
+				}
 			}
 		}
 		stage ('Publish: Dotnet Project FDD & SCD') {
