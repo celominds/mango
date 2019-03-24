@@ -59,7 +59,7 @@ pipeline {
 		stage ('Testing: Nunit Testing') {
 			agent {
 				docker {
-					image 'gabrielaraujof/nunit-console'
+					image 'microsoft/dotnet'
 				}
 			}
 			steps {
