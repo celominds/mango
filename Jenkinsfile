@@ -52,7 +52,7 @@ pipeline {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
 					message:  "${env.JobStartSN}"
-				sh "dotnet build ${env.DotnetProjectName} -c Release -o Testing"
+				sh "dotnet build ${env.DotnetProjectName} -c Release -o Nunit"
 			}
 		}
 		stage ('Testing: Nunit Testing') {
