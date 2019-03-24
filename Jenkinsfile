@@ -52,19 +52,8 @@ pipeline {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
 					message:  "${env.JobStartSN}"
+				sh "dotnet add ${env.DotnetProjectName} package NUnit --version 3.11.0"
 				sh "dotnet build ${env.DotnetProjectName} -c Release -o Nunit"
-			}
-		}
-		stage ('Publish: Dotnet Project FDD & SCD') {
-			agent {
-				docker { 
-					image 'microsoft/dotnet'
-				}
-			}
-			steps {
-				sh "${env.DotnetReleaseFDD}"
-				sh "tar -czvf mango.tar.gz Mango/Release/*"
-				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
 			}
 		}
 		stage ('Testing: Nunit Testing') {
@@ -81,6 +70,18 @@ pipeline {
 					sh "${env.NunitTest} Mango.dll"
 					nunit testResultsPattern: "TestReport.xml"
 				}
+			}
+		}
+		stage ('Publish: Dotnet Project FDD & SCD') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				sh "${env.DotnetReleaseFDD}"
+				sh "tar -czvf mango.tar.gz Mango/Release/*"
+				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
 			}
 		}
 		stage ('Jfrog Artifactory: Upload') {
