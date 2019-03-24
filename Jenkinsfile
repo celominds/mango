@@ -67,7 +67,7 @@ pipeline {
 					/*
 					* Changed the test command - without project solution name
 					*/
-					sh "${env.NunitTest} Mango.csproj"
+					sh "${env.NunitTest} \\bin\\Debug\\netcoreapp2.1\\Mango.dll"
 					nunit testResultsPattern: "TestReport.xml"
 				}
 			}
