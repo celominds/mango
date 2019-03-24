@@ -91,13 +91,12 @@ pipeline {
 				sh "cd /home/Artifactory/mango | tar -xvzf mango.tar.gz"
 			}
 		}
-		stage ('Archive Artifacts for Release') {
-			steps {
-				dir('Mango') {
-					archiveArtifacts artifacts: 'Release/**', fingerprint: true
-				}
-			}
-		}
+
+		/*
+		*
+		* Archive artifactory is removed as we are managing our binaries in jFrog
+		*
+		*/
 
 		/*
 		* Deployment will be tried after the above steps are successfull
