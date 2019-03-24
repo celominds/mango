@@ -52,13 +52,14 @@ pipeline {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
 					message:  "${env.JobStartSN}"
+				sh "dotnet add Mango/Mango.csproj package NUnit --version 3.11.0"
 				sh "dotnet build ${env.DotnetProjectName} -c Release -o Nunit"
 			}
 		}
 		stage ('Testing: Nunit Testing') {
 			agent {
 				docker {
-					image 'fela98/mono-nunit'
+					image 'vsejpal/mono-nunit'
 				}
 			}
 			steps {
