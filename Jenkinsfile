@@ -56,13 +56,7 @@ pipeline {
 			}
 		}
 		stage ('Testing: Nunit Testing') {
-			agent {
-				docker { 
-					image 'microsoft/dotnet'
-				}
-			}
 			steps {
-
 				/*
 				* Changed the test command - without project solution name
 				*/
