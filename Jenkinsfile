@@ -59,7 +59,7 @@ pipeline {
 		stage ('Testing: Nunit Testing') {
 			agent {
 				docker {
-					image 'vsejpal/mono-nunit'
+					image 'itsverywindy/nunit-console'
 				}
 			}
 			steps {
