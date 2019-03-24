@@ -56,15 +56,17 @@ pipeline {
 			}
 		}
 		stage ('Testing: Nunit Testing') {
+			agent {
+				docker {
+					image 'fela98/mono-nunit'
+				}
+			}
 			steps {
 				/*
 				* Changed the test command - without project solution name
 				*/
 				dir ("Mango") {
-					sh "dotnet add package NUnit.Console --version 3.9.0"
-					sh "${env.NunitTest} nunit.tests.dll /out:TestResult.txt"
-					sh "TestResult.txt"
-					sh "${env.NunitTest} ${env.NunitResultOutput}"
+					sh "${env.NunitTest} Mango.csproj ${env.NunitResultOutput}"
 					nunit testResultsPattern: "Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
 				}
 			}
