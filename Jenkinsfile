@@ -67,7 +67,7 @@ pipeline {
 				}
 			}
 			steps {
-				dir ('Nunit') {
+				dir ('Mango/Nunit') {
 					/*
 					* Changed the test command - without project solution name
 					*/
