@@ -27,14 +27,14 @@ pipeline {
 
 			// Dotnet Run Command Variables
 			DotnetBuild = 'nuget restore'
-			DotnetTest = 'dotnet test --no-build'
+			DotnetTest = 'dotnet test'
 
 			// Dotnet Test
-			DotnetTestResultDir = "-o Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/"
+			DotnetTestResultDir = "-o Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
 
 			// Dotnet Release
 			DotnetReleaseOutputDir = "-o Release/FDD/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/"
-			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release --no-build ${env.DotnetReleaseOutputDir}"
+			DotnetReleaseFDD = "dotnet publish ${env.DotnetProjectName} -c Release ${env.DotnetReleaseOutputDir}"
 	}
 
 	stages {
@@ -64,7 +64,7 @@ pipeline {
 				*/
 
 				sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
-				nunit testResultsPattern: 'Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/*.xml'
+				nunit testResultsPattern: "Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
 			}
 		}
 		stage ('Publish: Dotnet Project FDD & SCD') {
