@@ -1,4 +1,3 @@
-pipeline {
 	agent any
 	environment {
 		// Very Important; stops from overwriting on temporary files
@@ -56,19 +55,21 @@ pipeline {
 			}
 		}
 		stage ('Testing: Nunit Testing') {
+			// agent {
+			// 	docker {
+			// 		image 'fela98/mono-nunit'
+			// 	}
+			// }
 			agent {
-				docker {
-					image 'fela98/mono-nunit'
+				docker { 
+					image 'microsoft/dotnet'
 				}
 			}
 			steps {
-				dir ('Mango/Nunit') {
 					/*
 					* Changed the test command - without project solution name
 					*/
-					sh "${env.NunitTest} Mango.dll"
-					nunit testResultsPattern: "TestReport.xml"
-				}
+					sh "${env.NunitTest}"
 			}
 		}
 		stage ('Publish: Dotnet Project FDD & SCD') {
