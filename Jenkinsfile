@@ -61,6 +61,7 @@ pipeline {
 
 				/*
 				* Changed the test command - without project solution name
+				Neglecting the Projet Name
 				*/
 
 				sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
