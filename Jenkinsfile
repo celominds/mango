@@ -63,11 +63,11 @@ pipeline {
 				}
 			}
 			steps {
-				dir ('Mango/Nunit') {
+				dir ('Mango') {
 					/*
 					* Changed the test command - without project solution name
 					*/
-					sh "${env.NunitTest} Mango.dll"
+					sh "${env.NunitTest} /bin/Debug/netcoreapp2.1/Mango.dll"
 					nunit testResultsPattern: "TestReport.xml"
 				}
 			}
