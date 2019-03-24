@@ -31,7 +31,7 @@ pipeline {
 
 			//Nunit
 			NunitTest = "nunit3-console"
-			NunitResultOutput = "--result:Mango/TestReport.xml"
+			NunitResultOutput = "-work:Release/NunitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}: -out:TestResult.xml"
 
 			// Dotnet Test
 			DotnetTestResultDir = "-o Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
@@ -65,10 +65,8 @@ pipeline {
 				/*
 				* Changed the test command - without project solution name
 				*/
-				dir ("Mango") {
-					sh "${env.NunitTest} ${env.NunitResultOutput}"
-					nunit testResultsPattern: "TestReport.xml"
-				}
+				sh "${env.NunitTest}"
+				nunit testResultsPattern: "TestReport.xml"
 			}
 		}
 		stage ('Publish: Dotnet Project FDD & SCD') {
