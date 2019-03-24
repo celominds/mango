@@ -29,6 +29,10 @@ pipeline {
 			DotnetBuild = 'nuget restore'
 			DotnetTest = 'dotnet test'
 
+			//Nunit
+			NunitTest = "nunit-console"
+			NunitResultOutput = "/work:Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER} /out:TestReport.txt /result:TestReport.xml"
+
 			// Dotnet Test
 			DotnetTestResultDir = "-o Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
 
@@ -61,11 +65,10 @@ pipeline {
 
 				/*
 				* Changed the test command - without project solution name
-				Neglecting the Projet Name
 				*/
-
-				sh "${env.DotnetTest} ${env.DotnetProjectName} ${env.DotnetTestResultDir}"
-				nunit testResultsPattern: "Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
+				sh "dotnet add package NUnit.Console --version 3.9.0"
+				sh "${env.NunitTest} ${env.DotnetProjectName} ${env.NunitResultOutput}"
+				nunit testResultsPattern: "Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
 			}
 		}
 		stage ('Publish: Dotnet Project FDD & SCD') {
