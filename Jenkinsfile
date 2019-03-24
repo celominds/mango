@@ -62,6 +62,8 @@ pipeline {
 				*/
 				dir ("Mango") {
 					sh "dotnet add package NUnit.Console --version 3.9.0"
+					sh "${env.NunitTest} nunit.tests.dll /out:TestResult.txt"
+					sh "TestResult.txt"
 					sh "${env.NunitTest} ${env.NunitResultOutput}"
 					nunit testResultsPattern: "Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
 				}
