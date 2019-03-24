@@ -59,7 +59,7 @@ pipeline {
 		stage ('Testing: Nunit Testing') {
 			agent {
 				docker {
-					image 'itsverywindy/nunit-console'
+					image 'gabrielaraujof/nunit-console'
 				}
 			}
 			steps {
@@ -67,7 +67,9 @@ pipeline {
 					/*
 					* Changed the test command - without project solution name
 					*/
-					sh "nunit-console Mango.dll /framework:net-2.1"
+					sh "nunit-console Mango.dll /framework:net-2.1 /out:TestResult.txt"
+					sh "whomai"
+					sh "cat TestResult.Txt"
 					sh "sudo ${env.NunitTest} Mango.dll"
 					nunit testResultsPattern: "TestReport.xml"
 				}
