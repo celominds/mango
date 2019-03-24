@@ -52,29 +52,35 @@ pipeline {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
 					message:  "${env.JobStartSN}"
-				sh "dotnet add Mango/Mango.csproj package NUnit --version 3.11.0"
-				sh "dotnet build ${env.DotnetProjectName} -c Release -o Nunit"
+				sh "dotnet build ${env.DotnetProjectName}"
 			}
 		}
 		stage ('Testing: Nunit Testing') {
 			agent {
-				docker {
+				docker { 
 					image 'microsoft/dotnet'
 				}
 			}
 			steps {
-				dir ('Mango/Nunit') {
-					/*
-					* Changed the test command - without project solution name
-					*/
-					sh "nunit-console Mango.dll /framework:net-2.1 /out:TestResult.txt"
-					sh "whomai"
-					sh "cat TestResult.Txt"
-					sh "sudo ${env.NunitTest} Mango.dll"
-					nunit testResultsPattern: "TestReport.xml"
-				}
+				sh "dotnet test"
 			}
 		}
+		// stage ('Testing: Nunit Testing') {
+		// 	agent {
+		// 		docker {
+		// 			image 'vsejpal/mono-nunit'
+		// 		}
+		// 	}
+		// 	steps {
+		// 		dir ('Mango/Nunit') {
+		// 			/*
+		// 			* Changed the test command - without project solution name
+		// 			*/
+		// 			sh "sudo ${env.NunitTest} Mango.dll"
+		// 			nunit testResultsPattern: "TestReport.xml"
+		// 		}
+		// 	}
+		// }
 		stage ('Publish: Dotnet Project FDD & SCD') {
 			agent {
 				docker { 
