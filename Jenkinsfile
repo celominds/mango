@@ -80,7 +80,7 @@ pipeline {
 				sh "${env.DotnetReleaseSCDWindows10}"
 				sh "${env.DotnetReleaseSCDUbuntu16}"
 				sh "tar -czvf mango.tar.gz Mango/Release/*"
-				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}\""
+				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
 			}
 		}
 		stage ('Jfrog Artifactory: Upload') {
@@ -91,7 +91,7 @@ pipeline {
 		stage ('Jfrog Artifactory: Download') {
 			steps {
 				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
-				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/dotnet-survey.tar.gz\""
+				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
 				sh "cd /home/Artifactory/mango | tar -xvzf mango.tar.gz"
 			}
 		}
