@@ -58,7 +58,7 @@ pipeline {
 		stage ('Testing: Nunit Testing') {
 			agent {
 				docker {
-					image 'fela98/mono-nunit'
+					image 'rschmitz/nunit3-console'
 				}
 			}
 			steps {
