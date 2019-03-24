@@ -31,7 +31,7 @@ pipeline {
 
 			//Nunit
 			NunitTest = "nunit3-console"
-			NunitResultOutput = "/result:Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
+			NunitResultOutput = "--result:Mango/TestReport.xml"
 
 			// Dotnet Test
 			DotnetTestResultDir = "-o Release/UnitTest/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
@@ -66,8 +66,8 @@ pipeline {
 				* Changed the test command - without project solution name
 				*/
 				dir ("Mango") {
-					sh "${env.NunitTest} Mango.csproj ${env.NunitResultOutput}"
-					nunit testResultsPattern: "Release/Nunit/Mango-${env.BUILD_NUMBER}-Build-${env.BUILD_NUMBER}/TestReport.xml"
+					sh "${env.NunitTest} ${env.NunitResultOutput}"
+					nunit testResultsPattern: "TestReport.xml"
 				}
 			}
 		}
