@@ -18,7 +18,7 @@
     "Mango": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:6500",
+      "applicationUrl": "https://localhost:80",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

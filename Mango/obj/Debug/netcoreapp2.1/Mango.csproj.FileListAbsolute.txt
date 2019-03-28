@@ -1,67 +1,103 @@
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\Mango.deps.json
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\Mango.runtimeconfig.json
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\Mango.runtimeconfig.dev.json
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\Mango.dll
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\Mango.pdb
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\Mango.Views.dll
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\Mango.Views.pdb
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.csproj.CoreCompileInputs.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorAssemblyInfo.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorAssemblyInfo.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.AssemblyInfoInputs.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.AssemblyInfo.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.TagHelpers.input.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.TagHelpers.output.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorCoreGenerate.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorTargetAssemblyInfo.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorTargetAssemblyInfo.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.Views.pdb
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.dll
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.pdb
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.csproj.CopyComplete
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Mango.csprojAssemblyReference.cache
-C:\Users\Abhilash\source\repos\Mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Mango\Index.g.cshtml.cs
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.dll
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.pdb
-C:\Users\Abhilash\source\repos\Mango\Mango\bin\Debug\netcoreapp2.1\nunit.engine.netstandard.dll
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.dll
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\NUnit3.TestAdapter.pdb
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\nunit.engine.netstandard.dll
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\Mango.deps.json
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\Mango.runtimeconfig.json
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\Mango.runtimeconfig.dev.json
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\Mango.dll
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\Mango.pdb
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\Mango.Views.dll
-E:\Current WorkBench\mango\Mango\bin\Debug\netcoreapp2.1\Mango.Views.pdb
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.csprojAssemblyReference.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.csproj.CoreCompileInputs.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorAssemblyInfo.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorAssemblyInfo.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.AssemblyInfoInputs.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.AssemblyInfo.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.TagHelpers.input.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.TagHelpers.output.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorCoreGenerate.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Mango\Index.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorTargetAssemblyInfo.cache
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.RazorTargetAssemblyInfo.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.Views.pdb
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.dll
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.pdb
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Mango.csproj.CopyComplete
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Create.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Delete.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Details.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Edit.g.cshtml.cs
-E:\Current WorkBench\mango\Mango\obj\Debug\netcoreapp2.1\Razor\Views\MangoCounts\Index.g.cshtml.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/Mango.deps.json
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/Mango.runtimeconfig.json
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/Mango.runtimeconfig.dev.json
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/Mango.dll
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/Mango.pdb
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/Mango.Views.dll
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/Mango.Views.pdb
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.csproj.CoreCompileInputs.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorAssemblyInfo.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorAssemblyInfo.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.AssemblyInfoInputs.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.AssemblyInfo.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.TagHelpers.input.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.TagHelpers.output.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorCoreGenerate.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/_ViewImports.g.cshtml.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/_ViewStart.g.cshtml.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorTargetAssemblyInfo.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorTargetAssemblyInfo.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.Views.pdb
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.dll
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.pdb
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.csproj.CopyComplete
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Mango.csprojAssemblyReference.cache
+C:/Users/Abhilash/source/repos/Mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Mango/Index.g.cshtml.cs
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/NUnit3.TestAdapter.dll
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/NUnit3.TestAdapter.pdb
+C:/Users/Abhilash/source/repos/Mango/Mango/bin/Debug/netcoreapp2.1/nunit.engine.netstandard.dll
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/NUnit3.TestAdapter.dll
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/NUnit3.TestAdapter.pdb
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/nunit.engine.netstandard.dll
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/Mango.deps.json
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/Mango.runtimeconfig.json
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/Mango.runtimeconfig.dev.json
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/Mango.dll
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/Mango.pdb
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/Mango.Views.dll
+E:/Current WorkBench/mango/Mango/bin/Debug/netcoreapp2.1/Mango.Views.pdb
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.csprojAssemblyReference.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.csproj.CoreCompileInputs.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorAssemblyInfo.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorAssemblyInfo.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.AssemblyInfoInputs.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.AssemblyInfo.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.TagHelpers.input.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.TagHelpers.output.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorCoreGenerate.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Mango/Index.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/_ViewImports.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/_ViewStart.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorTargetAssemblyInfo.cache
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorTargetAssemblyInfo.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.Views.pdb
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.dll
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.pdb
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Mango.csproj.CopyComplete
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Create.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Delete.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Details.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Edit.g.cshtml.cs
+E:/Current WorkBench/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Index.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/NUnit3.TestAdapter.dll
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/NUnit3.TestAdapter.pdb
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/nunit.engine.netstandard.dll
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/Mango.deps.json
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/Mango.runtimeconfig.json
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/Mango.runtimeconfig.dev.json
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/Mango.dll
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/Mango.pdb
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/Mango.Views.dll
+/home/Workbench/Repository/mango/Mango/bin/Debug/netcoreapp2.1/Mango.Views.pdb
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.csprojAssemblyReference.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.csproj.CoreCompileInputs.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorAssemblyInfo.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorAssemblyInfo.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.AssemblyInfoInputs.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.AssemblyInfo.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.TagHelpers.input.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.TagHelpers.output.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorCoreGenerate.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Mango/Index.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Create.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Delete.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Details.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Edit.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/MangoCounts/Index.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/_ViewImports.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Razor/Views/_ViewStart.g.cshtml.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorTargetAssemblyInfo.cache
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.RazorTargetAssemblyInfo.cs
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.Views.pdb
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.dll
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.pdb
+/home/Workbench/Repository/mango/Mango/obj/Debug/netcoreapp2.1/Mango.csproj.CopyComplete
