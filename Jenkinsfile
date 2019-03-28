@@ -146,17 +146,17 @@ pipeline {
 		*
 		*/
 
-		// stage ('Deployment: SQL Server') {
-		// 	steps {
-		// 		sh "cd /home/Artifactory/mango | cp -R * /home/dev.celominds.com/mango/"
-		// 		sh "sqlcmd -U SA -P '' -i SqlScript.sql"
-		// 	}
-		// }
-		// stage ('Deployment: ASP.CORE Application') {
-		// 	steps {
-		// 		sh "docker run -d --name mango -v /home/Artifactory/\"mango\"/:/transfer -p 6500:6500 --link sql-supernet:sql-supernet -d microsoft/dotnet"
-		// 	}
-		// }
+		stage ('Deployment: SQL Server') {
+			steps {
+				sh "cd /home/Artifactory/mango | cp -R * /home/dev.celominds.com/mango/"
+				sh "sqlcmd -U SA -P '' -i SqlScript.sql"
+			}
+		}
+		stage ('Deployment: ASP.CORE Application') {
+			steps {
+				sh "docker run -d --name mango -v /home/Artifactory/\"mango\"/:/transfer -p 6500:6500 --link sql-supernet:sql-supernet -d microsoft/dotnet"
+			}
+		}
 	}
 	post {
 		success {
