@@ -100,9 +100,9 @@ pipeline {
 		}
 		stage ('Jfrog Artifactory: Download') {
 			steps {
-				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
-				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
-				sh "cd /home/Artifactory/mango | tar -xvzf mango.tar.gz"
+				sh "cd /home/Artifactory/mango | sudo curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
+				sh "cd /home/Artifactory/mango | sudo curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
+				sh "cd /home/Artifactory/mango | sudo tar -xvzf mango.tar.gz"
 			}
 		}
 
@@ -148,13 +148,13 @@ pipeline {
 
 		stage ('Deployment: SQL Server') {
 			steps {
-				sh "cd /home/Artifactory/mango | cp -R * /home/dev.celominds.com/mango/"
-				sh "sqlcmd -U SA -P '' -i SqlScript.sql"
+				sh "cd /home/Artifactory/mango | sudo cp -R * /home/dev.celominds.com/mango/"
+				sh "sudo sqlcmd -U SA -P '' -i SqlScript.sql"
 			}
 		}
 		stage ('Deployment: ASP.CORE Application') {
 			steps {
-				sh "docker run -d --name mango -v /home/Artifactory/\"mango\"/:/transfer -p 6500:6500 --link sql-supernet:sql-supernet -d microsoft/dotnet"
+				sh "sudo docker run -d --name mango -v /home/Artifactory/\"mango\"/:/transfer -p 6500:6500 --link sql-supernet:sql-supernet -d microsoft/dotnet"
 			}
 		}
 	}
