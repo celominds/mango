@@ -146,6 +146,9 @@ pipeline {
 		*
 		*/
 
+		/*
+		*
+		*
 		stage ('Deployment: SQL Server') {
 			steps {
 				sh "cd /home/Artifactory | cp -R mango /home/dev.celominds.com/mango/"
@@ -157,6 +160,17 @@ pipeline {
 				sh "docker run -d --name mango -v /home/Artifactory/\"mango\"/:/transfer -p 6500:6500 --link sql-supernet:sql-supernet -d microsoft/dotnet"
 			}
 		}
+		*
+		*
+		*/
+
+		stage ('Deployment: Docker') {
+			steps {
+				sh "docker-compose build"
+				sh "docker-compose up"
+			}
+		}
+
 	}
 	post {
 		success {

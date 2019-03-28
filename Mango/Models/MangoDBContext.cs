@@ -19,9 +19,18 @@ namespace Mango.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            /*
+            Developement - Environment -- Abhilash
+
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Server = DESKTOP-UD9NFAQ\\SQLEXPRESS; Database = MangoDB ; Trusted_Connection = True");
+            }
+            */
+
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server =db;Database=master;User=sa;Password=Your_password123;");
             }
         }
 
