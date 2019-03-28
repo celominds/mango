@@ -148,7 +148,7 @@ pipeline {
 
 		stage ('Deployment: SQL Server') {
 			steps {
-				sh "cd /home/Artifactory/mango | sudo cp -R * /home/dev.celominds.com/mango/"
+				sh "cd /home/Artifactory | sudo cp -R mango /home/dev.celominds.com/mango/"
 				sh "sudo sqlcmd -U SA -P '' -i SqlScript.sql"
 			}
 		}
