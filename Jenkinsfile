@@ -12,7 +12,7 @@ pipeline {
 		SuccessJobCC = '#7cfc00'
 		FailureJobCC = '#ff4500'
 		UnstableJobCC = '#0000ff'
-		DeploymentJobCC = '0000ff'
+		DeploymentJobCC = '#4a90e2'
 
 		// Slack Notification
 		JobStartSN = "STARTED: Job has Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
