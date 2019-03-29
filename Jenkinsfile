@@ -177,8 +177,10 @@ pipeline {
 					color: "${env.DeploymentJobCC}",
 					message: "${env.DeplymentApproveSN}"
 				input "Does the staging environment look ok?"
-				sh "docker-compose build"
-				sh "docker-compose up -d"
+				dir ('/home/dev.celominds.com/mango') {
+					sh "cp -R /home/Artifactory/mango/Mango ."
+					sh "nohup dotnet Mango/Release/mango/Mango.dll > /dev/null 2>&1 &"
+				}
 			}
 		}
 
