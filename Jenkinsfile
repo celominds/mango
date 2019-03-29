@@ -58,16 +58,16 @@ pipeline {
 				sh "dotnet build ${env.DotnetProjectName}"
 			}
 		}
-		// stage ('Testing: Nunit Testing') {
-		// 	agent {
-		// 		docker { 
-		// 			image 'microsoft/dotnet'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		sh "dotnet test"
-		// 	}
-		// }
+		stage ('Testing: Nunit Testing') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				sh "dotnet test"
+			}
+		}
 		// stage ('Testing: Nunit Testing') {
 		// 	agent {
 		// 		docker {
@@ -101,13 +101,13 @@ pipeline {
 				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mangodb.sql \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
 			}
 		}
-		// stage ('Jfrog Artifactory: Download') {
-		// 	steps {
-		// 		sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
-		// 		sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
-		// 		sh "cd /home/Artifactory/mango | tar -xvzf mango.tar.gz"
-		// 	}
-		// }
+		stage ('Jfrog Artifactory: Download') {
+			steps {
+				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
+				sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
+				sh "cd /home/Artifactory/mango | tar -xvzf mango.tar.gz"
+			}
+		}
 
 		/*
 		*
