@@ -12,6 +12,7 @@ pipeline {
 		SuccessJobCC = '#7cfc00'
 		FailureJobCC = '#ff4500'
 		UnstableJobCC = '#0000ff'
+		DeploymentJobCC = '0000ff'
 
 		// Slack Notification
 		JobStartSN = "STARTED: Job has Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
@@ -169,8 +170,8 @@ pipeline {
 		stage ('Deployment: Docker') {
 			steps {
 				slackSend channel: '#bangalore_dev_team',
-					color: "${env.JobStartCC}",
-					message:  "${env.DeplymentApproveSN}"
+					color: "${env.DeploymentJobCC}",
+					message: "${env.DeplymentApproveSN}"
 				input "Does the staging environment look ok?"
 				sh "docker-compose build"
 				sh "docker-compose up -d"
@@ -193,6 +194,14 @@ pipeline {
 			slackSend channel: '#bangalore_dev_team',
 					color: "${env.UnstableJobCC}",
 					message: UnstableJobSN
+		}
+		aborted {
+			script {
+        		currentBuild.result = 'SUCCESS'
+      		}
+			slackSend channel: '#bangalore_dev_team',
+					color: "${env.DeploymentJobCC}",
+					message: JobSuccessSN
 		}
 	}
 }
