@@ -171,7 +171,7 @@ pipeline {
 		*
 		*/
 
-		stage ('Deployment: Docker') {
+		stage ('Deployment') {
 			steps {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.DeploymentJobCC}",
