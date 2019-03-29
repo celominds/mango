@@ -163,14 +163,10 @@ pipeline {
 		*
 		*
 		*/
-		stage('Sanity check') {
-            steps {
-                input "Does the staging environment look ok?"
-            }
-        }
 
 		stage ('Deployment: Docker') {
 			steps {
+				input "Does the staging environment look ok?"
 				sh "docker-compose build"
 				sh "docker-compose up -d"
 			}
