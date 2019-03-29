@@ -91,7 +91,7 @@ pipeline {
 				}
 			}
 			steps {
-				sh "rm -f -r Mango/Release/*"
+				sh "sudo rm -f -r Mango/Release/*"
 				sh "${env.DotnetReleaseFDD}"
 				sh "tar -czvf mango.tar.gz Mango/Release/*"
 				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
