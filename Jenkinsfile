@@ -204,7 +204,7 @@ pipeline {
       		}
 			slackSend channel: '#bangalore_dev_team',
 					color: "${env.DeploymentJobCC}",
-					message: JobSuccessSN
+					message: DeplymentApproveSN
 		}
 	}
 }
