@@ -104,11 +104,11 @@ pipeline {
 		}
 		stage ('Jfrog Artifactory: Download') {
 			steps {
-				dir ('/home/Artifactory/mango') {
-					sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
-					sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
-					sh "tar -xvzf mango.tar.gz"
-					sh "tar -xvzf mangodb.tar.gz"
+				dir ('') {
+					sh "cd /home/Artifactory/mango && curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
+					sh "cd /home/Artifactory/mango && curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
+					sh "cd /home/Artifactory/mango && tar -xvzf mango.tar.gz"
+					sh "cd /home/Artifactory/mango && tar -xvzf mangodb.tar.gz"
 				}
 			}
 		}
@@ -177,10 +177,8 @@ pipeline {
 					color: "${env.DeploymentJobCC}",
 					message: "${env.DeplymentApproveSN}"
 				input "Does the staging environment look ok?"
-				dir ('/home/dev.celominds.com/mango') {
-					sh "cp -R /home/Artifactory/mango/Mango ."
-					sh "nohup dotnet Mango/Release/mango/Mango.dll > /dev/null 2>&1 &"
-				}
+				sh "cd /home/dev.celominds.com/mango && cp -R /home/Artifactory/mango/Mango ."
+				sh "cd /home/dev.celominds.com/mango && nohup dotnet Mango/Release/mango/Mango.dll > /dev/null 2>&1 &"
 			}
 		}
 
