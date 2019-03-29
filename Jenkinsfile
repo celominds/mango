@@ -105,10 +105,10 @@ pipeline {
 		stage ('Jfrog Artifactory: Download') {
 			steps {
 				dir ('') {
-					sh "cd /home/Artifactory/mango && sudo -t curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
-					sh "cd /home/Artifactory/mango && sudo -t curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
-					sh "cd /home/Artifactory/mango && sudo -t tar -xvzf mango.tar.gz"
-					sh "cd /home/Artifactory/mango && sudo -t tar -xvzf mangodb.tar.gz"
+					sh "cd /home/Artifactory/mango && sudo -S curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
+					sh "cd /home/Artifactory/mango && sudo -S curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
+					sh "cd /home/Artifactory/mango && sudo -S tar -xvzf mango.tar.gz"
+					sh "cd /home/Artifactory/mango && sudo -S tar -xvzf mangodb.tar.gz"
 				}
 			}
 		}
@@ -177,8 +177,8 @@ pipeline {
 					color: "${env.DeploymentJobCC}",
 					message: "${env.DeplymentApproveSN}"
 				input "Does the staging environment look ok?"
-				sh "cd /home/dev.celominds.com/mango && sudo -t cp -R /home/Artifactory/mango/Mango ."
-				sh "cd /home/dev.celominds.com/mango && sudo -t nohup dotnet Mango/Release/mango/Mango.dll > /dev/null 2>&1 &"
+				sh "cd /home/dev.celominds.com/mango && sudo -S cp -R /home/Artifactory/mango/Mango ."
+				sh "cd /home/dev.celominds.com/mango && sudo -S nohup dotnet Mango/Release/mango/Mango.dll > /dev/null 2>&1 &"
 			}
 		}
 
