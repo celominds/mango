@@ -99,7 +99,7 @@ pipeline {
 		stage ('Jfrog Artifactory: Upload') {
 			steps {
 				sh "tar -czvf mangodb.tar.gz mangodb"
-				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mangodb.sql \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
+				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mangodb.tar.gz \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
 			}
 		}
 		stage ('Jfrog Artifactory: Download') {
