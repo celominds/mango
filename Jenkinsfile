@@ -20,7 +20,7 @@ pipeline {
 		JobFailureSN = "FAILURE: Job - ${currentBuild.fullDisplayName} has failed. (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
 		UnstableJobSN = "UNSTABLE: Job - ${currentBuild.fullDisplayName} is unstable. (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
 
-		DeplymentApproveSN = "DEPLOYMENT: Job - ${currentBuild.fullDisplayName} is ready for deployment, Please proceed with approval in the following link. (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
+		DeplymentApproveSN = "DEPLOYMENT: Job - ${currentBuild.fullDisplayName} is ready for deployment, Please proceed with approval in the following link. (<${env.BUILD_URL}>) - (<${env.BUILD_URL}/console|Console Output>)"
 
 		// Dotnet
 			// Dotnet Bat Variables
@@ -84,23 +84,23 @@ pipeline {
 		// 		}
 		// 	}
 		// }
-		// stage ('Publish: Dotnet Project FDD & SCD') {
-		// 	agent {
-		// 		docker { 
-		// 			image 'microsoft/dotnet'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		sh "${env.DotnetReleaseFDD}"
-		// 		sh "tar -czvf mango.tar.gz Mango/Release/*"
-		// 		sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
-		// 	}
-		// }
-		// stage ('Jfrog Artifactory: Upload') {
-		// 	steps {
-		// 		sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mangodb.sql \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
-		// 	}
-		// }
+		stage ('Publish: Dotnet Project FDD & SCD') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				sh "${env.DotnetReleaseFDD}"
+				sh "tar -czvf mango.tar.gz Mango/Release/*"
+				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
+			}
+		}
+		stage ('Jfrog Artifactory: Upload') {
+			steps {
+				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mangodb.sql \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
+			}
+		}
 		// stage ('Jfrog Artifactory: Download') {
 		// 	steps {
 		// 		sh "cd /home/Artifactory/mango | curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.sql\""
