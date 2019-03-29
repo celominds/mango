@@ -42,19 +42,19 @@ pipeline {
 	}
 
 	stages {
-		// stage ('Build: Dotnet Project') {
-		// 	agent {
-		// 		docker { 
-		// 			image 'microsoft/dotnet'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		slackSend channel: '#bangalore_dev_team',
-		// 			color: "${env.JobStartCC}",
-		// 			message:  "${env.JobStartSN}"
-		// 		sh "dotnet build ${env.DotnetProjectName}"
-		// 	}
-		// }
+		stage ('Build: Dotnet Project') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				slackSend channel: '#bangalore_dev_team',
+					color: "${env.JobStartCC}",
+					message:  "${env.JobStartSN}"
+				sh "dotnet build ${env.DotnetProjectName}"
+			}
+		}
 		// stage ('Testing: Nunit Testing') {
 		// 	agent {
 		// 		docker { 
@@ -166,7 +166,10 @@ pipeline {
 
 		stage ('Deployment: Docker') {
 			steps {
-				input "Does the staging environment look ok?"
+				slackSend channel: '#bangalore_dev_team',
+					color: "${env.JobStartCC}",
+					message:  input "Does the staging environment look ok?"
+				// input "Does the staging environment look ok?"
 				sh "docker-compose build"
 				sh "docker-compose up -d"
 			}
