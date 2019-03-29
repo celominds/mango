@@ -19,6 +19,8 @@ pipeline {
 		JobFailureSN = "FAILURE: Job - ${currentBuild.fullDisplayName} has failed. (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
 		UnstableJobSN = "UNSTABLE: Job - ${currentBuild.fullDisplayName} is unstable. (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
 
+		DeplymentApproveSN = "DEPLOYMENT: Job - ${currentBuild.fullDisplayName} is ready for deployment, Please proceed with approval in the following link. (<${env.BUILD_URL}|Job URL>) - (<${env.BUILD_URL}/console|Console Output>)"
+
 		// Dotnet
 			// Dotnet Bat Variables
 			DotnetProjectName = "Mango.sln"
@@ -168,8 +170,8 @@ pipeline {
 			steps {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
-					message:  input "Does the staging environment look ok?"
-				// input "Does the staging environment look ok?"
+					message:  "${env.DeplymentApproveSN}"
+				input "Does the staging environment look ok?"
 				sh "docker-compose build"
 				sh "docker-compose up -d"
 			}
