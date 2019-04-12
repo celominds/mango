@@ -54,7 +54,7 @@ pipeline {
 			steps {
 				slackSend channel: '#bangalore_dev_team',
 					color: "${env.JobStartCC}",
-					message:  "${env.JobStartSN}"
+					message: "${env.JobStartSN}"
 				sh "dotnet build ${env.DotnetProjectName}"
 			}
 		}
@@ -68,22 +68,22 @@ pipeline {
 				sh "dotnet test"
 			}
 		}
-		stage ('Testing: Nunit Testing') {
-			agent {
-				docker {
-					image 'vsejpal/mono-nunit'
-				}
-			}
-			steps {
-				dir ('Mango/Nunit') {
-					/*
-					* Changed the test command - without project solution name
-					*/
-					sh "sudo ${env.NunitTest} Mango.dll"
-					nunit testResultsPattern: "TestReport.xml"
-				}
-			}
-		}
+		// stage ('Testing: Nunit Testing') {
+		// 	agent {
+		// 		docker {
+		// 			image 'vsejpal/mono-nunit'
+		// 		}
+		// 	}
+		// 	steps {
+		// 		dir ('Mango/Nunit') {
+		// 			/*
+		// 			* Changed the test command - without project solution name
+		// 			*/
+		// 			sh "sudo ${env.NunitTest} Mango.dll"
+		// 			nunit testResultsPattern: "TestReport.xml"
+		// 		}
+		// 	}
+		// }
 		stage ('Publish: Dotnet Project FDD & SCD') {
 			agent {
 				docker { 
