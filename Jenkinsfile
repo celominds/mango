@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	environment {
 		// Very Important; stops from overwriting on temporary files
-		// HOME = '/tmp'
+		HOME = '/tmp'
 
 		// Global Variables
 		ApplicationName = "Mango"
