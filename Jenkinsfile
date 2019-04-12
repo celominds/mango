@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	environment {
 		// Very Important; stops from overwriting on temporary files
-		HOME = '/tmp'
+		// HOME = '/tmp'
 
 		// Global Variables
 		ApplicationName = "Mango"
@@ -45,45 +45,45 @@ pipeline {
 	}
 
 	stages {
-		// stage ('Build: Dotnet Project') {
-		// 	agent {
-		// 		docker { 
-		// 			image 'microsoft/dotnet'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		slackSend channel: '#bangalore_dev_team',
-		// 			color: "${env.JobStartCC}",
-		// 			message:  "${env.JobStartSN}"
-		// 		sh "dotnet build ${env.DotnetProjectName}"
-		// 	}
-		// }
-		// stage ('Testing: Nunit Testing') {
-		// 	agent {
-		// 		docker { 
-		// 			image 'microsoft/dotnet'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		sh "dotnet test"
-		// 	}
-		// }
-		// stage ('Testing: Nunit Testing') {
-		// 	agent {
-		// 		docker {
-		// 			image 'vsejpal/mono-nunit'
-		// 		}
-		// 	}
-		// 	steps {
-		// 		dir ('Mango/Nunit') {
-		// 			/*
-		// 			* Changed the test command - without project solution name
-		// 			*/
-		// 			sh "sudo ${env.NunitTest} Mango.dll"
-		// 			nunit testResultsPattern: "TestReport.xml"
-		// 		}
-		// 	}
-		// }
+		stage ('Build: Dotnet Project') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				slackSend channel: '#bangalore_dev_team',
+					color: "${env.JobStartCC}",
+					message:  "${env.JobStartSN}"
+				sh "dotnet build ${env.DotnetProjectName}"
+			}
+		}
+		stage ('Testing: Nunit Testing') {
+			agent {
+				docker { 
+					image 'microsoft/dotnet'
+				}
+			}
+			steps {
+				sh "dotnet test"
+			}
+		}
+		stage ('Testing: Nunit Testing') {
+			agent {
+				docker {
+					image 'vsejpal/mono-nunit'
+				}
+			}
+			steps {
+				dir ('Mango/Nunit') {
+					/*
+					* Changed the test command - without project solution name
+					*/
+					sh "sudo ${env.NunitTest} Mango.dll"
+					nunit testResultsPattern: "TestReport.xml"
+				}
+			}
+		}
 		stage ('Publish: Dotnet Project FDD & SCD') {
 			agent {
 				docker { 
@@ -94,15 +94,18 @@ pipeline {
 				// sh "rm -f -r Mango/Release/*"
 				sh "${env.DotnetReleaseFDD}"
 				sh "tar -czvf mango.tar.gz Mango/Release/*"
-				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
+				sh "curl -uadmin:AP3HGAz5C2M6Qf1Dcm3pwi6HwFq -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
 			}
 		}
 		stage ('Jfrog Artifactory: Upload') {
 			steps {
 				sh "tar -czvf mangodb.tar.gz mangodb"
-				sh "curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -T mangodb.tar.gz \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
+				sh "curl -uadmin:AP3HGAz5C2M6Qf1Dcm3pwi6HwFq -T mangodb.tar.gz \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
 			}
 		}
+
+		/*
+		*
 		stage ('Jfrog Artifactory: Download') {
 			steps {
 				sh "cd /home/Artifactory/mango && sudo curl -uadmin:AP4ZpfcUDj5N2o7gJ6eP6fqgnui -O \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
@@ -111,6 +114,8 @@ pipeline {
 				sh "cd /home/Artifactory/mango && sudo tar -xvzf mangodb.tar.gz"
 			}
 		}
+		*
+		*/
 
 		/*
 		*
@@ -170,6 +175,8 @@ pipeline {
 		*
 		*/
 
+		/*
+		*
 		stage ('Deployment') {
 			steps {
 				slackSend channel: '#bangalore_dev_team',
@@ -180,6 +187,8 @@ pipeline {
 				sh "cd /home/dev.celominds.com/mango && sudo nohup dotnet Mango/Release/mango/Mango.dll > /dev/null 2>&1 &"
 			}
 		}
+		*
+		*/
 
 	}
 	post {
