@@ -94,13 +94,13 @@ pipeline {
 				// sh "rm -f -r Mango/Release/*"
 				sh "${env.DotnetReleaseFDD}"
 				sh "tar -czvf mango.tar.gz Mango/Release/*"
-				sh "curl -uadmin:AP3HGAz5C2M6Qf1Dcm3pwi6HwFq -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
+				sh "curl -uadmin:AP2wchb22VnoAnT8VzWYeUGdKWg -T mango.tar.gz \"https://dev.celominds.com/artifactory/mango/dotnet-core/${env.JOB_NAME}-${env.BUILD_NUMBER}/mango.tar.gz\""
 			}
 		}
 		stage ('Jfrog Artifactory: Upload') {
 			steps {
 				sh "tar -czvf mangodb.tar.gz mangodb"
-				sh "curl -uadmin:AP3HGAz5C2M6Qf1Dcm3pwi6HwFq -T mangodb.tar.gz \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
+				sh "curl -uadmin:AP2wchb22VnoAnT8VzWYeUGdKWg -T mangodb.tar.gz \"https://dev.celominds.com/artifactory/mango/database/${env.JOB_NAME}-${env.BUILD_NUMBER}/mangodb.tar.gz\""
 			}
 		}
 
